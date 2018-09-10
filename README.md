@@ -1,0 +1,2 @@
+# pinger
+Fast ping
