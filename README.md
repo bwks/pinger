@@ -16,9 +16,20 @@ pip3 install https://github.com/bobthebutcher/pinger/archive/master.zip
 ```
 
 ## Usage
+Ping a single host
 ```
 pinger 4.2.2.2 -v 
 4.2.2.2 -- UP
+```
+
+Pingsweep a subnet
+```
+pinger 10.1.1.0/24 -v 
+10.1.1.178 -- UP
+10.1.1.100 -- UP
+<snip>
+10.1.1.249 -- DOWN
+10.1.1.44 -- DOWN
 ```
 
 ### JSON output

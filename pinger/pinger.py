@@ -46,13 +46,28 @@ def worker(network, pool_size=256, file_name='', verbose=False):
     pool_size = pool_size
     host_list = get_host_list(network)
     pool = ThreadPool(pool_size)
-    result = []
+    results = []
+    hosts_up = 0
+    hosts_down = 0
     for host in host_list:
-        result.append(pool.apply_async(pinger, (host, verbose)))
+        result = pool.apply_async(pinger, (host, verbose))
+        results.append(result)
+        if result[host] == 'UP':
+            hosts_up += 1
+        else:
+            hosts_down += 1
+
     pool.close()
     pool.join()
+
+    hashes = '#' * 25
+    print('{0} Results {0}'.format(hashes))
+    print('Total Hosts: {0} | Hosts up: {1} | Hosts down: {2}'.format(
+        hosts_up + hosts_down, hosts_up, hosts_down)
+    )
+
     if file_name:
-        json_to_file(file_name, result)
+        json_to_file(file_name, results)
 
 
 def main():
