@@ -12,7 +12,12 @@ Python >= 3.4
 
 ## Installation
 ```
-pip3 install https://github.com/bobthebutcher/pinger/archive/master.zip
+pip3 install --user https://github.com/bobthebutcher/pinger/archive/master.zip
+```
+
+You may need to restart your shell to update your path
+```
+exec bash -l
 ```
 
 ## Usage
