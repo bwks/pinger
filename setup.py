@@ -23,7 +23,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'pinger = pinger',
+            'pinger=pinger.pinger:main',
         ]
     },
 
